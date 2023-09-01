@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs')%>
+<main>
+    <div class="container-event">
+        <div>
+            <div class="container-img-daisy">
+                <img class = "daisy" src="<%= event.image %>" alt="img" width="250" height="300">
+            </div>
+        </div>
+        <div class="container-content">
+            <div class="d-flex">
+                <p>RSVP:</p>
+                <form action= "/profile" method="POST">
+                    <button class="btn btn-success" type = "submit" name="status" value="YES" formmethod="POST" formaction="/events/<%= event._id %>/rsvp">YES</button>
+                    <button class="btn btn-danger" type = "submit" name="status" value="NO" formmethod="POST" formaction="/events/<%= event._id %>/rsvp">NO</button>
+                    <button class="btn btn-primary" type = "submit" name="status" value="MAYBE" formmethod="POST" formaction="/events/<%= event._id %>/rsvp">MAYBE</button>
+                </form>
+            </div>
+            
+            <h1><%= event.category %> for <%= event.title %> on <%= event.start %></h1>
+            <hr>
+            <p>Host: <%= event.host.firstName + ' ' + event.host.lastName%></p>
+            <p>Start: <%= startDate %> at <%= startTime %></p>
+            <p>End: <%= endDate %> at <%= endTime %></p>
+            <p>Location: <%= event.location %></p>
+            <p>Number of RSVPs: <%= rsvp_ %></p>
+            <hr>
+            <p>Details: <%= event.details %></p>
+        </div>
+    </div>
+</main>
+<%- include('../partials/footer.ejs')%>

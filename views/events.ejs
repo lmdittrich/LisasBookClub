@@ -1,0 +1,71 @@
+<%- include('./partials/header.ejs')%>
+<main>
+    <div class="container-content">
+        <h1>List of current events for Lisa's book club</h1>
+        <br>
+        <hr>
+        
+        <% if(events.length){ %>
+            <ul>
+                <h2 class="m-2">Group Reading by Date</h2>
+                <% events.forEach(function(event) { %>
+                    <% if(event.category == 'Reading') { %>
+                        <li class="m-2"><a class="events" href="/events/<%=event._id %>"><%= event.start.toLocaleDateString() %> <%= event.start.toLocaleTimeString() %>: <%= event.title %></a></li>
+                    <% } %>
+                <% }); %>
+            </ul>
+
+            <br>
+            <hr>
+
+            <ul>
+                <h2 class="m-2">Group Discussion by Date</h2>
+                <% events.forEach(function(event) { %>
+                    <% if(event.category == 'Discussion') { %>
+                        <li class="m-2"><a class="events" href="/events/<%=event._id %>"><%= event.start.toLocaleDateString() %> <%= event.start.toLocaleTimeString() %>: <%= event.title %></a></li>
+                    <% } %>
+                <% }); %>
+            </ul>
+
+            <br>
+            <hr>
+
+            <ul>
+                <h2 class = 'm-2'>Group Movie by Date</h2>
+                <% events.forEach(function(event) { %>
+                    <% if(event.category == 'Movie') { %>
+                        <li class="m-2"><a class="events" href="/events/<%=event._id %>"><%= event.start.toLocaleDateString() %> <%= event.start.toLocaleTimeString() %>: <%= event.title %></a></li>
+                    <% } %>
+                <% }); %>
+            </ul>
+
+            <br>
+            <hr>
+
+            <ul>
+                <h2 class="m-2">Group Bookstore by Date</h2>
+                <% events.forEach(function(event) { %>
+                    <% if(event.category == 'Bookstore') { %>
+                        <li class="m-2"><a class="events" href="/events/<%=event._id %>"><%= event.start.toLocaleDateString() %> <%= event.start.toLocaleTimeString() %>: <%= event.title %></a></li>
+                    <% } %>
+                <% }); %>
+            </ul>
+
+            <br>
+            <hr>
+
+            <ul>
+                <h2 class="m-2">Group Book Signing by Date</h2>
+                <% events.forEach(function(event) { %>
+                    <% if(event.category == 'Signing') { %>
+                        <li class="m-2"><a class="events" href="/events/<%=event._id %>"><%= event.start.toLocaleDateString() %> <%= event.start.toLocaleTimeString() %>: <%= event.title %></a></li>
+                    <% } %>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <h2>There are no events to display</h2>
+        <% } %>
+        
+    </div>
+</main>
+<%- include('./partials/footer.ejs')%>

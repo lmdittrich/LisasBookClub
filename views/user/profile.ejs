@@ -1,0 +1,37 @@
+<%- include('../partials/header.ejs')%>
+
+<main>
+    <div class="container-content">
+        <h2>Welcome, <%=user.firstName%></h2>
+        <% if(events.length) { %>
+            <p>You have created the following stories</p>
+            <% events.forEach(event => { %>
+                <div class="container-content d-flex justify-content-evenly">
+                    <a href="/events/<%=event.id%>"><%= event.title %></a>
+                    <form action="">
+                        <button type = "submit" formmethod="GET" formaction="/events/<%= event._id %>/edit"><i class="fa-solid fa-pen-to-square fa-sm"></i></button>
+                        <button type = "submit" formmethod="POST" formaction="/events/<%= event._id %>?_method=delete"><i class="fa-solid fa-square-minus fa-sm"></i></button>
+                    </form>
+                </div>
+                <hr>
+            <% });
+        } else { %>
+            <p>You have not created any events</p>
+        <% } %>
+
+        <% if(rsvp.length) { %>
+            <p>RSVPs to events:</p>
+            <% rsvp.forEach(r => { %>
+                <div class="container-content d-flex justify-content-evenly">
+                    <a href="/events/<%=r.event%>"><%= r.event %></a>
+                    <p><%= r.status %></p>
+                </div>
+                <hr>
+            <% });
+        } else { %>
+            <p>You have no RSVPs</p>
+        <% } %>
+    </div>
+</main>
+
+<%- include('../partials/footer.ejs')%>
